@@ -44,6 +44,13 @@ class _QuestionAppState extends State<QuestionApp> {
     }
   ];
 
+  void _restart(){
+   setState(() {
+     _selectedQuestion = 0;
+     _totalScore = 0;
+   });
+  }
+
   void _answer(int totalScore) {
     if (haveASelectedQuestion) {
       setState(() {
@@ -70,7 +77,7 @@ class _QuestionAppState extends State<QuestionApp> {
                   questions: _questions,
                   selectedQuestion: _selectedQuestion,
                   answer: _answer)
-              : const Result(text: "Parabéns!")),
+              : Result(score: _totalScore, restart: _restart,)),
     );
   }
 }
